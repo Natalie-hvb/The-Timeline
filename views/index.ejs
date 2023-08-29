@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style.css">
+    <script src="https://kit.fontawesome.com/1284c12520.js" crossorigin="anonymous"></script>
+    <title>The Timeline</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="nav-half">
+                <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-house"></i>
+                <input id="url-box" type="text" placeholder="https://localhost">
+            </div>
+            <div class="input-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="input-field">
+            </div>
+        </nav>
+        <h3>Timeline</h3>
+    </header>
+    <main>
+        <div id="input">
+            <form action="/create-post" method="post" onsubmit="return validateForm()">
+                <h3>Post a message</h3>
+                <textarea name="message" id="message" maxlength="1000"></textarea>
+                <div id="submit-form">
+                    <input type="type" id="name" name="name" placeholder="Full name">
+                    <button>Post a message</button>
+                </div>
+            </form>
+        </div>
+    
+        <div id="output">
+            <% for (let i = 0; i < posts.length; i++) { %>
+                <div id="output-posts">
+                    <h5><%= posts[i].name %></h5>
+                    <p><%= posts[i].message %></p>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+
+    <script>
+        function validateForm() {
+            var messageInput = document.getElementById("message");
+            var message = messageInput.value;
+        
+            if (message.length < 25) {
+                alert("Please enter at least 25 characters in the message.");
+                return false;
+            }
+        
+            return true;
+        }
+    </script>
+</body>
+</html>
